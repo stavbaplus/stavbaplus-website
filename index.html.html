@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#FBFAF7">
+<meta name="description" content="Stavba Plus oziroma Stavba+ je pregledna aplikacija za obvestila, prijave napak, dokumente in komunikacijo v večstanovanjskih stavbah. Pilotni program se odpira poleti 2026.">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Stavba Plus | Stavba+ — pilotni program">
+<meta property="og:description" content="Stavba Plus oziroma Stavba+ je pregledna aplikacija za obvestila, prijave napak, dokumente in komunikacijo v večstanovanjskih stavbah.">
+<meta property="og:url" content="https://stavbaplus.si">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="sl_SI">
+<meta property="og:site_name" content="Stavba Plus">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Stavba Plus | Stavba+ — pilotni program">
+<meta name="twitter:description" content="Stavba Plus oziroma Stavba+ je pregledna aplikacija za obvestila, prijave napak, dokumente in komunikacijo v večstanovanjskih stavbah.">
+<title>Stavba Plus | Stavba+ — aplikacija za večstanovanjske stavbe</title>
+<link rel="canonical" href="https://www.stavbaplus.si/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.17.0/dist/tabler-icons.min.css">
+<style>
+  :root {
+    --cream: #FBFAF7;
+    --white: #FFFFFF;
+    --paper: #F4F2EC;
+    --dark: #0F2419;
+    --dark-2: #102B1E;
+    --ink: #191D19;
+    --ink-2: #3E4339;
+    --ink-3: #6E7268;
+    --ink-4: #9C9F95;
+    --on-dark: #F6F1EA;
+    --on-dark-2: rgba(246, 241, 234, 0.70);
+    --on-dark-3: rgba(246, 241, 234, 0.44);
+    --accent: #2E5D4C;
+    --accent-2: #3D7B65;
+    --accent-soft: #E6EFE9;
+    --accent-on-dark: #A4D4B5;
+    --success: #A4D4B5;
+    --error: #F0B9A9;
+    --line: rgba(15, 23, 17, 0.08);
+    --line-2: rgba(15, 23, 17, 0.14);
+    --line-dark: rgba(246, 241, 234, 0.10);
+    --line-dark-2: rgba(246, 241, 234, 0.18);
+    --shadow-soft: 0 24px 70px rgba(15, 36, 25, 0.08);
+    --ls-tight: -0.032em;
+    --ls-body: -0.006em;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { min-height: 100%; -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    font-size: 17px;
+    line-height: 1.5;
+    letter-spacing: var(--ls-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+  ::selection { background: var(--accent); color: var(--cream); }
+  .serif {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: 0;
+  }
+  a { color: inherit; text-decoration: none; }
+  button, input { font-family: inherit; }
+
+  .stage {
+    min-height: 100vh;
+    min-height: 100svh;
+    display: grid;
+    grid-template-columns: minmax(0, 1.12fr) minmax(420px, 0.88fr);
+  }
+
+  .stage-left {
+    background:
+      radial-gradient(circle at 88% 9%, rgba(46, 93, 76, 0.075), transparent 34%),
+      radial-gradient(circle at 0% 94%, rgba(46, 93, 76, 0.045), transparent 30%),
+      var(--cream);
+    padding: clamp(34px, 4vw, 56px) clamp(28px, 5vw, 72px);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+  .stage-left::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(15, 23, 17, 0.026) 1px, transparent 1px), linear-gradient(90deg, rgba(15, 23, 17, 0.02) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: radial-gradient(circle at 50% 45%, black, transparent 70%);
+    pointer-events: none;
+  }
+
+  .left-top,
+  .left-bottom,
+  .left-middle,
+  .right-top,
+  .right-middle,
+  .right-bottom { position: relative; z-index: 1; }
+
+  .left-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    font-family: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 720;
+    font-size: 18px;
+    line-height: 1;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+  .logo:hover { color: var(--accent); }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--ink-3);
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    font-weight: 550;
+    padding: 7px 14px;
+    border: 1px solid var(--line-2);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.74);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 10px 30px rgba(15, 36, 25, 0.035);
+    white-space: nowrap;
+  }
+  .badge .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.52; transform: scale(0.84); }
+  }
+
+  .left-middle {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(48px, 8vh, 84px) 0;
+  }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 620;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 30px;
+    align-self: flex-start;
+  }
+  .eyebrow i { font-size: 14px; }
+  .hero {
+    font-size: clamp(38px, 5vw, 68px);
+    line-height: 1.02;
+    letter-spacing: var(--ls-tight);
+    font-weight: 570;
+    margin-bottom: 24px;
+    color: var(--ink);
+    max-width: 700px;
+  }
+  .hero .serif {
+    color: var(--accent);
+    font-size: 1.1em;
+  }
+  .quote-marks {
+    color: var(--accent);
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-weight: 400;
+    opacity: 0.30;
+    font-size: 0.88em;
+    line-height: 0;
+  }
+  .supporting {
+    max-width: 620px;
+    font-size: clamp(16px, 1.45vw, 19px);
+    color: var(--ink-2);
+    line-height: 1.58;
+    margin-bottom: 42px;
+  }
+  .context-line {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 12px;
+    color: var(--ink-3);
+    letter-spacing: 0.075em;
+    text-transform: uppercase;
+    font-weight: 520;
+    margin-bottom: 16px;
+  }
+  .context-line::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--ink-3);
+  }
+
+  .comparison {
+    display: flex;
+    align-items: stretch;
+    gap: 14px;
+    max-width: 660px;
+  }
+  .comp-pill {
+    flex: 1;
+    padding: 18px 20px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow-soft);
+    backdrop-filter: blur(12px);
+    min-width: 0;
+  }
+  .comp-pill.after {
+    background: linear-gradient(145deg, var(--accent), #214D3E);
+    color: var(--cream);
+    border-color: rgba(46, 93, 76, 0.85);
+  }
+  .comp-label {
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.11em;
+    font-weight: 650;
+    color: var(--ink-3);
+    margin-bottom: 7px;
+  }
+  .comp-pill.after .comp-label { color: var(--accent-on-dark); }
+  .comp-text {
+    font-size: 14px;
+    line-height: 1.48;
+    color: var(--ink);
+    margin: 0;
+    letter-spacing: -0.006em;
+  }
+  .comp-pill.after .comp-text { color: var(--cream); font-weight: 520; }
+  .comp-arrow {
+    display: grid;
+    place-items: center;
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 38px;
+    color: var(--accent);
+    line-height: 1;
+    flex: 0 0 34px;
+  }
+  .left-bottom {
+    font-size: 13px;
+    color: var(--ink-3);
+  }
+
+  .stage-right {
+    background:
+      radial-gradient(circle at 4% 8%, rgba(164, 212, 181, 0.10), transparent 34%),
+      radial-gradient(circle at 105% 100%, rgba(164, 212, 181, 0.075), transparent 40%),
+      linear-gradient(160deg, var(--dark), var(--dark-2));
+    color: var(--on-dark);
+    padding: clamp(34px, 4vw, 56px) clamp(28px, 4.8vw, 66px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+  }
+  .stage-right::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, rgba(255,255,255,0.05), transparent 24%, transparent 70%, rgba(255,255,255,0.025));
+    pointer-events: none;
+  }
+
+  .building-illustration {
+    position: absolute;
+    right: clamp(-120px, -7vw, -40px);
+    bottom: clamp(-88px, -5vw, -42px);
+    width: min(68vw, 700px);
+    max-width: 80%;
+    height: auto;
+    color: rgba(186, 224, 198, 0.46);
+    opacity: 0.24;
+    pointer-events: none;
+    z-index: 0;
+    filter: drop-shadow(0 10px 26px rgba(0, 0, 0, 0.06));
+  }
+  .building-illustration .bi-main {
+    stroke-width: 1.35;
+  }
+  .building-illustration .bi-detail {
+    stroke-width: 0.96;
+    opacity: 0.68;
+  }
+  .building-illustration .bi-soft {
+    stroke-width: 0.82;
+    opacity: 0.36;
+  }
+  .right-top {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .right-meta {
+    font-size: 12px;
+    color: var(--on-dark-3);
+    letter-spacing: 0.075em;
+    text-transform: uppercase;
+    font-weight: 580;
+  }
+  .right-meta .serif {
+    color: var(--accent-on-dark);
+    text-transform: none;
+    margin-left: 4px;
+  }
+  .right-middle {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(44px, 7vh, 72px) 0;
+  }
+  .audience {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    width: fit-content;
+    color: var(--accent-on-dark);
+    background: rgba(164, 212, 181, 0.09);
+    border: 1px solid rgba(164, 212, 181, 0.16);
+    border-radius: 999px;
+    padding: 7px 12px;
+    font-size: 12px;
+    font-weight: 560;
+    letter-spacing: 0.025em;
+    margin-bottom: 22px;
+  }
+  .right-h {
+    font-size: clamp(31px, 3.75vw, 48px);
+    line-height: 1.05;
+    letter-spacing: var(--ls-tight);
+    font-weight: 560;
+    color: var(--on-dark);
+    margin-bottom: 18px;
+    max-width: 500px;
+  }
+  .right-h .serif { color: var(--accent-on-dark); font-size: 1.08em; }
+  .right-sub {
+    font-size: 16px;
+    color: var(--on-dark-2);
+    line-height: 1.58;
+    margin-bottom: 30px;
+    max-width: 480px;
+  }
+  .right-sub strong {
+    color: var(--on-dark);
+    font-weight: 560;
+  }
+
+  form {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+    max-width: 470px;
+  }
+  label.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  input[type="email"] {
+    width: 100%;
+    padding: 16px 22px;
+    border: 1.5px solid var(--line-dark-2);
+    border-radius: 999px;
+    background: rgba(246, 241, 234, 0.06);
+    color: var(--on-dark);
+    font-size: 15px;
+    transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+    letter-spacing: var(--ls-body);
+  }
+  input[type="email"]:focus {
+    outline: none;
+    border-color: var(--accent-on-dark);
+    background: rgba(246, 241, 234, 0.1);
+    box-shadow: 0 0 0 4px rgba(164, 212, 181, 0.12);
+  }
+  input[type="email"]::placeholder { color: var(--on-dark-3); }
+  button {
+    background: var(--accent-on-dark);
+    color: var(--dark);
+    border: 1.5px solid var(--accent-on-dark);
+    padding: 16px 24px;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 650;
+    cursor: pointer;
+    transition: transform 0.18s cubic-bezier(0.22, 0.61, 0.36, 1), background 0.18s, border-color 0.18s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    letter-spacing: var(--ls-body);
+  }
+  button:hover { background: #C4E4CE; border-color: #C4E4CE; transform: translateY(-1px); }
+  button:active { transform: scale(0.97); }
+  button:disabled { opacity: 0.62; cursor: not-allowed; transform: none; }
+  .privacy-note {
+    max-width: 470px;
+    margin-top: 10px;
+    color: var(--on-dark-3);
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  .form-perks {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 470px;
+    list-style: none;
+  }
+  .form-perks li {
+    font-size: 13.5px;
+    color: var(--on-dark-2);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    letter-spacing: -0.005em;
+  }
+  .form-perks li i {
+    color: var(--accent-on-dark);
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .message-panel {
+    display: none;
+    max-width: 470px;
+    border: 1px solid var(--line-dark-2);
+    border-radius: 24px;
+    padding: 26px;
+    background: rgba(246, 241, 234, 0.055);
+    backdrop-filter: blur(16px);
+  }
+  .message-panel.show { display: block; }
+  .message-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(164, 212, 181, 0.14);
+    color: var(--accent-on-dark);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  .message-panel.error .message-icon {
+    background: rgba(240, 185, 169, 0.14);
+    color: var(--error);
+  }
+  .message-icon i { font-size: 28px; }
+  .message-panel h3 {
+    font-size: 27px;
+    font-weight: 560;
+    letter-spacing: -0.021em;
+    margin-bottom: 10px;
+    color: var(--on-dark);
+  }
+  .message-panel h3 .serif { color: var(--accent-on-dark); }
+  .message-panel p {
+    font-size: 15px;
+    color: var(--on-dark-2);
+    line-height: 1.58;
+  }
+  .message-panel a {
+    color: var(--accent-on-dark);
+    border-bottom: 1px solid rgba(164, 212, 181, 0.35);
+  }
+  .right-bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    flex-wrap: wrap;
+    font-size: 12px;
+    color: var(--on-dark-3);
+    letter-spacing: 0.04em;
+  }
+  .right-bottom a:hover { color: var(--accent-on-dark); }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.82s ease-out, transform 0.82s cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+  .reveal.d1 { transition-delay: 0.08s; }
+  .reveal.d2 { transition-delay: 0.16s; }
+  .reveal.d3 { transition-delay: 0.26s; }
+  .reveal.d4 { transition-delay: 0.36s; }
+  .reveal.d5 { transition-delay: 0.48s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
+    .reveal { opacity: 1; transform: none; }
+  }
+
+  @media (max-width: 1060px) {
+    .stage { grid-template-columns: 1fr; min-height: auto; }
+    .stage-left, .stage-right { min-height: 100svh; }
+    .right-top { justify-content: flex-start; }
+    .comparison { max-width: none; }
+    .building-illustration { width: min(90vw, 600px); max-width: 90%; opacity: 0.22; right: -110px; bottom: -56px; }
+  }
+  @media (max-width: 680px) {
+    body { font-size: 16px; }
+    .stage-left, .stage-right { padding: 28px 22px; min-height: auto; }
+    .left-top { align-items: flex-start; }
+    .logo { font-size: 16px; letter-spacing: 0.12em; }
+    .building-illustration { width: 600px; max-width: none; opacity: 0.16; right: -210px; bottom: -58px; }
+    .badge { font-size: 11px; padding: 6px 12px; }
+    .left-middle, .right-middle { padding: 42px 0; }
+    .hero { font-size: clamp(37px, 12vw, 54px); }
+    .supporting { font-size: 16px; margin-bottom: 32px; }
+    .comparison { flex-direction: column; gap: 12px; }
+    .comp-arrow { transform: rotate(90deg); font-size: 30px; flex-basis: auto; min-height: 18px; }
+    .comp-pill { width: 100%; padding: 16px 18px; }
+    .right-h { font-size: clamp(32px, 10vw, 42px); }
+    .right-sub { font-size: 15px; margin-bottom: 24px; }
+    .form-perks { margin-top: 20px; }
+    .right-bottom { flex-direction: column; gap: 8px; }
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Stavba Plus",
+  "alternateName": ["Stavba+", "StavbaPlus", "stavbaplus.si"],
+  "url": "https://www.stavbaplus.si/",
+  "inLanguage": "sl-SI",
+  "description": "Stavba Plus oziroma Stavba+ je pregledna aplikacija za obvestila, prijave napak, dokumente in komunikacijo v večstanovanjskih stavbah."
+}
+</script>
+</head>
+<body>
+
+<main class="stage">
+  <section class="stage-left" aria-labelledby="main-title">
+    <div class="left-top">
+      <a href="/" class="logo" aria-label="Stavba plus">STAVBA+</a>
+      <div class="badge reveal d1">
+        <span class="dot" aria-hidden="true"></span> Poletje 2026
+      </div>
+    </div>
+
+    <div class="left-middle">
+      <span class="eyebrow reveal">
+        <i class="ti ti-sparkles" aria-hidden="true"></i> Kmalu prihaja
+      </span>
+
+      <h1 class="hero reveal d1" id="main-title">
+        <span class="quote-marks">»</span>Zjutraj ni <span class="serif">vode</span>.<br>
+        Nihče ne ve, zakaj.<span class="quote-marks">«</span>
+      </h1>
+
+      <div class="context-line reveal d2">Pogosta situacija v večstanovanjskih stavbah</div>
+
+      <p class="supporting reveal d2">
+        Ko so obvestila raztresena med oglasno desko, e-maili in skupinami, pomembne informacije hitro zgrešijo ljudi, ki jih najbolj potrebujejo.
+      </p>
+
+      <div class="comparison reveal d3" aria-label="Primerjava trenutnega načina in uporabe aplikacije Stavba plus">
+        <div class="comp-pill">
+          <div class="comp-label">Trenutno</div>
+          <p class="comp-text">Obvestila se izgubijo. Statusi niso jasni.</p>
+        </div>
+        <div class="comp-arrow" aria-hidden="true">→</div>
+        <div class="comp-pill after">
+          <div class="comp-label">S Stavba+</div>
+          <p class="comp-text">Vse je na enem mestu — jasno, pravočasno, sledljivo.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="left-bottom reveal d5">
+      © 2026 Stavba+ · Stavba Plus · Razvito v Ljubljani
+    </div>
+  </section>
+
+  <section class="stage-right" aria-labelledby="signup-title">
+    <svg class="building-illustration" viewBox="0 0 820 580" aria-hidden="true" focusable="false">
+      <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+        <path class="bi-soft" d="M90 500h622" />
+
+        <!-- left premium residential block -->
+        <path class="bi-main" d="M132 264h156v236H132z" />
+        <path class="bi-detail" d="M154 296h38M208 296h38" />
+        <path class="bi-detail" d="M154 334h38M208 334h38" />
+        <path class="bi-detail" d="M154 372h38M208 372h38" />
+        <path class="bi-detail" d="M154 410h38M208 410h38" />
+        <path class="bi-soft" d="M146 312h128M146 350h128M146 388h128" />
+        <path class="bi-detail" d="M192 500v-70c0-18 14-30 36-30s36 12 36 30v70" />
+
+        <!-- center elegant apartment tower -->
+        <path class="bi-main" d="M314 154h214v346H314z" />
+        <path class="bi-detail" d="M344 194h42M400 194h42M456 194h42" />
+        <path class="bi-detail" d="M344 232h42M400 232h42M456 232h42" />
+        <path class="bi-detail" d="M344 270h42M400 270h42M456 270h42" />
+        <path class="bi-detail" d="M344 308h42M400 308h42M456 308h42" />
+        <path class="bi-detail" d="M344 346h42M400 346h42M456 346h42" />
+        <path class="bi-detail" d="M344 384h42M400 384h42M456 384h42" />
+        <path class="bi-detail" d="M344 422h42M400 422h42M456 422h42" />
+        <path class="bi-soft" d="M330 212h182M330 250h182M330 288h182M330 326h182M330 364h182M330 402h182" />
+        <path class="bi-detail" d="M386 500v-86c0-24 18-40 35-40s35 16 35 40v86" />
+
+        <!-- right stepped residential block -->
+        <path class="bi-main" d="M546 224h92v276H546z" />
+        <path class="bi-main" d="M638 262h64v238H638z" />
+        <path class="bi-detail" d="M562 258h24M598 258h24" />
+        <path class="bi-detail" d="M562 294h24M598 294h24" />
+        <path class="bi-detail" d="M562 330h24M598 330h24" />
+        <path class="bi-detail" d="M562 366h24M598 366h24" />
+        <path class="bi-detail" d="M654 296h16M654 332h16M654 368h16M654 404h16" />
+        <path class="bi-soft" d="M556 276h72M556 312h72M556 348h72" />
+        <path class="bi-detail" d="M574 500v-64c0-16 12-28 18-28h0c6 0 18 12 18 28v64" />
+
+        <!-- subtle balconies / urban details -->
+        <path class="bi-soft" d="M132 500c18-18 42-28 68-24" />
+        <path class="bi-soft" d="M522 500c18-20 42-28 66-24" />
+        <path class="bi-soft" d="M686 500c12-18 28-26 44-22" />
+        <path class="bi-soft" d="M726 500v-72" />
+        <path class="bi-soft" d="M714 428c0-18 14-30 30-30s30 12 30 30c0 18-14 28-30 44-16-16-30-26-30-44Z" />
+      </g>
+    </svg>
+    <div class="right-top">
+      <span class="right-meta">Pilotni program <span class="serif">odprt</span></span>
+    </div>
+
+    <div class="right-middle">
+      <div id="formContent">
+        <div class="audience reveal d1">
+          <i class="ti ti-building-community" aria-hidden="true"></i>
+          Za upravnike, predstavnike in stanovalce
+        </div>
+
+        <h2 class="right-h reveal d2" id="signup-title">
+          Prijavi svojo stavbo <span class="serif">med prve</span>.
+        </h2>
+
+        <p class="right-sub reveal d3">
+          Stavba+ je pregledna aplikacija za <strong>obvestila, prijave napak, dokumente in komunikacijo</strong> v večstanovanjskih stavbah.
+        </p>
+
+        <form id="signupForm" action="https://formspree.io/f/mgodjana" method="POST" class="reveal d4" novalidate>
+          <label for="email" class="sr-only">E-poštni naslov</label>
+          <input id="email" type="email" name="email" placeholder="vaš@e-naslov.si" autocomplete="email" inputmode="email" required>
+          <input type="hidden" name="source" value="stavbaplus-coming-soon">
+          <input type="hidden" name="_subject" value="Nova prijava za pilotni program Stavba+">
+          <button type="submit" id="submitBtn">
+            Prijavi se v pilotni program <i class="ti ti-arrow-right" aria-hidden="true"></i>
+          </button>
+        </form>
+
+        <p class="privacy-note reveal d4">
+          Uporabimo ga samo za obvestilo o pilotnem programu. Brez spama.
+        </p>
+
+        <ul class="form-perks reveal d5">
+          <li><i class="ti ti-check" aria-hidden="true"></i> Eno obvestilo ob začetku. Brez spama.</li>
+          <li><i class="ti ti-check" aria-hidden="true"></i> Posebni pogoji za prve pilotne stavbe.</li>
+          <li><i class="ti ti-check" aria-hidden="true"></i> Podatki gostujejo v EU in so skladni z GDPR.</li>
+        </ul>
+      </div>
+
+      <div class="message-panel" id="success" role="status" aria-live="polite">
+        <div class="message-icon"><i class="ti ti-check" aria-hidden="true"></i></div>
+        <h3>Hvala. <span class="serif">Zabeleženo.</span></h3>
+        <p>Obvestilo o pilotnem programu pošljemo na vpisani e-naslov. Če imate v stavbi predstavnika ali upravnika, mu lahko stran pošljete naprej.</p>
+      </div>
+
+      <div class="message-panel error" id="error" role="alert" aria-live="assertive">
+        <div class="message-icon"><i class="ti ti-alert-circle" aria-hidden="true"></i></div>
+        <h3>Prijava ni uspela.</h3>
+        <p>Preverite e-naslov ali nam pišite neposredno na <a href="mailto:info@stavbaplus.si">info@stavbaplus.si</a>.</p>
+      </div>
+    </div>
+
+    <div class="right-bottom">
+      <a href="mailto:info@stavbaplus.si">info@stavbaplus.si</a>
+      <span>Stavba Plus oziroma Stavba+ · en prostor za vse informacije v stavbi</span>
+    </div>
+  </section>
+</main>
+
+<script>
+  document.querySelectorAll('.reveal').forEach((el) => {
+    window.setTimeout(() => el.classList.add('in'), 50);
+  });
+
+  const form = document.getElementById('signupForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const formContent = document.getElementById('formContent');
+  const success = document.getElementById('success');
+  const errorPanel = document.getElementById('error');
+  const email = document.getElementById('email');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    errorPanel.classList.remove('show');
+
+    if (!email.validity.valid) {
+      email.focus();
+      email.reportValidity();
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = 'Pošiljam… <i class="ti ti-loader-2" aria-hidden="true"></i>';
+
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (!response.ok) throw new Error('Form submit failed');
+
+      formContent.style.display = 'none';
+      success.classList.add('show');
+    } catch (err) {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = 'Prijavi se v pilotni program <i class="ti ti-arrow-right" aria-hidden="true"></i>';
+      errorPanel.classList.add('show');
+    }
+  });
+</script>
+
+</body>
+</html>
