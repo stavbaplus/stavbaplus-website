@@ -1475,6 +1475,42 @@
     pointer-events: none;
   }
   .pricing-single > * { position: relative; z-index: 1; }
+  .pricing-ribbon {
+    position: absolute;
+    top: 28px;
+    right: -92px;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 340px;
+    text-align: center;
+    white-space: nowrap;
+    background: linear-gradient(180deg, #2E5D4C 0%, #254C3E 100%);
+    color: var(--cream);
+    padding: 11px 22px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    box-shadow: 0 12px 24px rgba(46, 93, 76, 0.20);
+    transform: rotate(38deg);
+  }
+  .pricing-ribbon::before,
+  .pricing-ribbon::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 14px;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.10);
+  }
+  .pricing-ribbon::before {
+    left: 0;
+  }
+  .pricing-ribbon::after {
+    right: 0;
+  }
   .pricing-single h3 {
     font-size: clamp(26px, 3vw, 36px);
     margin: 0 0 12px;
@@ -1969,6 +2005,15 @@
     .price-card h3 { padding-right: 0; }
     .price-badge { position: static; width: max-content; margin-bottom: 16px; }
     .pricing-single { padding: 32px 26px; }
+    .pricing-ribbon {
+      top: 22px;
+      right: -84px;
+      width: 290px;
+      font-size: 9.5px;
+      padding: 9px 14px;
+      letter-spacing: 0.03em;
+      transform: rotate(38deg);
+    }
     .pricing-addon { grid-template-columns: 1fr; padding: 24px 22px; }
     .pricing-addon-price { grid-column: auto; text-align: left; }
     .faq-question-card { padding: 26px 22px; }
@@ -2454,11 +2499,12 @@
   <div class="container">
     <div class="section-head reveal">
       <span class="eyebrow"><span class="dot"></span>Cenik</span>
-      <h2 class="h-section">Enostavna cena za vaš blok.</h2>
+      <h2 class="h-section">Enotna cena na stanovanje.</h2>
       <p class="lead">Brez paketov, brez kompliciranja. Ena jasna cena za stavbe do 100 stanovanj, AI pomočnik pa je na voljo kot ločen dodatek.</p>
     </div>
 
     <div class="pricing-single reveal d1">
+      <div class="pricing-ribbon">3 mesece brezplačno</div>
       <div>
         <h3>Stavba+</h3>
         <p>Vsa obvestila, prijave napak, dokumenti, koledar in pregled dogajanja v vaši stavbi — na enem mestu.</p>
