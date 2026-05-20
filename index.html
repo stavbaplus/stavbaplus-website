@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#FBFAF7">
-<meta name="description" content="Stavba+ je pregledna aplikacija za obvestila, prijave napak, dokumente in komunikacijo v vaši stavbi. Prijavi se in bodi obveščen, ko aplikacija zaživi.">
-<meta property="og:title" content="Stavba+ — pregledna aplikacija za vašo stavbo">
+<meta name="description" content="Stavba+ bo združil obvestila, dokumente, rezervni sklad, prijavo težav in AI pomoč za vaš blok na enem mestu. Prijavite svojo stavbo na prednostni seznam.">
+<meta property="og:title" content="Stavba+ — vse, kar mora vaš blok vedeti, na enem mestu">
 <meta property="og:description" content="Obvestila, prijave napak, dokumenti in komunikacija na enem mestu. Prijavi se in bodi obveščen, ko aplikacija zaživi.">
 <meta property="og:url" content="https://stavbaplus.si">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="sl_SI">
-<title>Stavba+ — pregledna aplikacija za vašo stavbo</title>
+<title>Stavba+ — vse o vašem bloku na enem mestu</title>
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
@@ -231,6 +231,169 @@
   .reveal.d3 { transition-delay: 0.24s; }
   .reveal.d4 { transition-delay: 0.32s; }
 
+
+  /* === INTRO PROBLEM QUOTES === */
+  .problem-hook {
+    padding: 72px 0 118px;
+    background:
+      radial-gradient(circle at 14% 18%, rgba(164, 212, 181, 0.18), transparent 34%),
+      linear-gradient(180deg, #FBFAF7 0%, #F4F2EC 100%);
+    border-bottom: 1px solid var(--line);
+    overflow: hidden;
+  }
+  .problem-hook::after { display: none; }
+  .problem-shell {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 38px;
+    border-radius: 34px;
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.56);
+    box-shadow: 0 18px 50px rgba(15, 36, 25, 0.06);
+    backdrop-filter: saturate(140%) blur(8px);
+    -webkit-backdrop-filter: saturate(140%) blur(8px);
+  }
+  .problem-grid {
+    display: grid;
+    grid-template-columns: minmax(320px, 0.95fr) minmax(0, 1.05fr);
+    gap: 52px;
+    align-items: stretch;
+  }
+
+  .problem-stack {
+    display: grid;
+    align-content: start;
+    gap: 16px;
+  }
+
+  .problem-kicker {
+    width: max-content;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 13px;
+    border-radius: 999px;
+    background: rgba(15, 23, 17, 0.06);
+    color: var(--ink-2);
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    margin-bottom: 8px;
+    border: 1px solid var(--line);
+  }
+  .problem-kicker .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .problem-quote {
+    position: relative;
+    margin: 0;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    padding: 21px 22px 19px 56px;
+    box-shadow: var(--shadow-sm);
+  }
+  .problem-quote::before {
+    content: "“";
+    position: absolute;
+    left: 20px;
+    top: 18px;
+    font-family: Georgia, 'Times New Roman', serif;
+    color: var(--accent);
+    font-size: 48px;
+    line-height: 0.75;
+    font-weight: 700;
+  }
+  .problem-quote p {
+    margin: 0;
+    color: var(--ink);
+    font-size: 15.5px;
+    line-height: 1.5;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .problem-quote span {
+    display: block;
+    margin-top: 6px;
+    color: var(--ink-3);
+    font-size: 13.5px;
+    font-weight: 500;
+  }
+
+  .problem-copy {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 34px 32px;
+    border-radius: 28px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.84) 0%, rgba(250,252,250,0.96) 100%);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow-sm);
+  }
+  .problem-title {
+    font-size: clamp(34px, 4.8vw, 58px);
+    line-height: 1.04;
+    letter-spacing: -0.036em;
+    max-width: 620px;
+    margin: 0 0 18px;
+    color: var(--ink);
+  }
+  .problem-title .accent {
+    color: var(--accent);
+  }
+  .problem-lead {
+    max-width: 560px;
+    margin: 0;
+  }
+
+  @media (max-width: 980px) {
+    .problem-hook { padding: 48px 0 84px; }
+    .problem-shell {
+      margin: 0 32px;
+      padding: 28px;
+    }
+    .problem-grid {
+      grid-template-columns: 1fr;
+      gap: 28px;
+      text-align: left;
+    }
+    .problem-copy {
+      order: -1;
+      padding: 28px 24px;
+    }
+    .problem-title {
+      max-width: 760px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .problem-shell {
+      margin: 0 22px;
+      padding: 18px;
+      border-radius: 24px;
+    }
+    .problem-grid { gap: 22px; }
+    .problem-quote {
+      padding: 19px 18px 18px 50px;
+      border-radius: 18px;
+    }
+    .problem-copy {
+      padding: 24px 20px;
+      border-radius: 20px;
+    }
+    .problem-quote::before {
+      left: 17px;
+      top: 16px;
+      font-size: 44px;
+    }
+  }
+
+
   /* ===========================================
      HOOK (intro problem statement)
      =========================================== */
@@ -385,7 +548,7 @@
      HERO
      =========================================== */
   .hero {
-    padding: 56px 0 100px;
+    padding: 110px 0 100px;
     background:
       radial-gradient(circle at 85% 10%, rgba(164, 212, 181, 0.22), transparent 38%),
       linear-gradient(180deg, #FBFAF7 0%, #F4F2EC 100%);
@@ -393,12 +556,12 @@
     overflow: hidden;
   }
   .hero-grid {
-    max-width: 1180px;
+    max-width: 1280px;
     margin: 0 auto;
-    padding: 0 32px;
+    padding: 0 28px;
     display: grid;
-    grid-template-columns: 1.05fr 0.95fr;
-    gap: 64px;
+    grid-template-columns: 0.84fr 1.16fr;
+    gap: 48px;
     align-items: center;
   }
   .hero-copy { min-width: 0; }
@@ -418,11 +581,11 @@
   .hero-tag i { font-size: 16px; }
   .hero-copy h1 {
     margin-bottom: 22px;
-    max-width: 600px;
+    max-width: 540px;
   }
   .hero-copy h1 .accent { color: var(--accent); }
   .hero-copy .lead {
-    max-width: 540px;
+    max-width: 500px;
     margin-bottom: 32px;
   }
   .hero-cta {
@@ -469,6 +632,9 @@
     pointer-events: none;
   }
   .mockup > * { position: relative; z-index: 1; }
+  .mockup-wrap {
+    width: 100%;
+  }
   .mockup-top {
     display: flex;
     justify-content: space-between;
@@ -490,6 +656,29 @@
     letter-spacing: -0.025em;
     font-weight: 500;
     margin: 0;
+  }
+  .mockup-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .mockup-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: rgba(244, 240, 232, 0.08);
+    border: 1px solid var(--line-dark);
+    color: var(--on-dark-2);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+  .mockup-meta i {
+    font-size: 13px;
+    color: var(--accent-on-dark);
   }
   .mockup-pill {
     display: inline-flex;
@@ -594,9 +783,79 @@
     padding: 4px 8px;
     white-space: nowrap;
   }
+  .mockup-panels {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .mockup-mini {
+    border: 1px solid var(--line-dark);
+    background: rgba(244, 240, 232, 0.06);
+    border-radius: 14px;
+    padding: 14px;
+  }
+  .mockup-mini-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .mockup-mini-head strong {
+    font-size: 13px;
+    color: var(--on-dark);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .mockup-mini-head span {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--accent-on-dark);
+    background: rgba(164, 212, 181, 0.12);
+    border-radius: 999px;
+    padding: 4px 7px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+  .mockup-mini-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 8px;
+  }
+  .mockup-mini-list li {
+    display: grid;
+    grid-template-columns: 8px minmax(0,1fr);
+    gap: 8px;
+    align-items: start;
+  }
+  .mockup-mini-list .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent-on-dark);
+    margin-top: 5px;
+    box-shadow: 0 0 0 4px rgba(164, 212, 181, 0.08);
+  }
+  .mockup-mini-list strong {
+    display: block;
+    font-size: 12px;
+    color: var(--on-dark);
+    line-height: 1.25;
+    margin-bottom: 1px;
+  }
+  .mockup-mini-list span {
+    display: block;
+    font-size: 10.5px;
+    color: var(--on-dark-2);
+    line-height: 1.35;
+  }
   .mockup-stats {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 8px;
     margin-top: 12px;
   }
@@ -860,30 +1119,50 @@
   .preview-progress .pp-photo {
     height: 56px;
     border-radius: 8px;
-    background: linear-gradient(135deg, #D9E2D6 0%, #B8C5B0 100%);
+    background:
+      radial-gradient(circle at 22% 58%, rgba(69, 92, 52, 0.82) 0 10px, transparent 11px),
+      radial-gradient(circle at 34% 45%, rgba(92, 117, 68, 0.72) 0 9px, transparent 10px),
+      radial-gradient(circle at 28% 68%, rgba(57, 78, 41, 0.78) 0 8px, transparent 9px),
+      radial-gradient(circle at 42% 62%, rgba(101, 125, 73, 0.68) 0 7px, transparent 8px),
+      linear-gradient(180deg, rgba(31, 39, 30, 0.12) 0 62%, rgba(52, 46, 39, 0.26) 62% 100%),
+      linear-gradient(135deg, #DCD9D1 0%, #CFCBBF 55%, #B6B1A4 100%);
     margin-bottom: 10px;
     position: relative;
     overflow: hidden;
+    border: 1px solid rgba(15, 23, 17, 0.06);
   }
   .preview-progress .pp-photo::after {
-    content: "";
+    content: "KLET";
     position: absolute;
-    top: 12px;
-    left: 18px;
-    width: 2px;
-    height: 32px;
-    background: rgba(0,0,0,0.18);
-    border-radius: 2px;
+    left: 8px;
+    top: 8px;
+    padding: 3px 6px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.8);
+    border: 1px solid rgba(15, 23, 17, 0.08);
+    color: rgba(15, 36, 25, 0.72);
+    font-size: 8.5px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
   }
   .preview-progress .pp-photo::before {
-    content: "\ea1e";
-    font-family: 'tabler-icons';
+    content: "plesen na steni";
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: rgba(15, 36, 25, 0.45);
-    font-size: 20px;
+    right: 8px;
+    bottom: 7px;
+    color: rgba(255,255,255,0.9);
+    background: rgba(15, 23, 17, 0.34);
+    border-radius: 999px;
+    padding: 3px 6px;
+    font-size: 8.5px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+  .preview-progress.no-photo .preview-steps {
+    margin-top: 14px;
+  }
+  .preview-step-labels.three {
+    padding: 0 1px;
   }
   .preview-steps {
     display: flex;
@@ -1651,11 +1930,13 @@
      =========================================== */
   @media (max-width: 980px) {
     section { padding: 72px 0; }
-    .hero { padding: 36px 0 64px; }
+    .hero { padding: 72px 0 64px; }
     .hero-grid {
       grid-template-columns: 1fr;
       gap: 48px;
       text-align: center;
+      max-width: 1180px;
+      padding: 0 32px;
     }
     .hero-copy h1, .hero-copy .lead { margin-left: auto; margin-right: auto; }
     .hero-cta { justify-content: center; }
@@ -1677,6 +1958,8 @@
     .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
   }
   @media (max-width: 600px) {
+    .mockup-panels { grid-template-columns: 1fr; }
+    .mockup-stats { grid-template-columns: repeat(2, 1fr); }
     .container { padding: 0 22px; }
     .nav-inner { padding: 14px 22px; }
     .nav-links { display: none; }
@@ -1707,6 +1990,36 @@
 </head>
 <body>
 
+<style>
+  /* clean additions */
+  .price-example {
+    margin: 26px auto 0; max-width: 640px; text-align: center;
+    background: var(--white); border: 1px solid var(--line);
+    border-radius: 18px; padding: 22px 26px;
+  }
+  .price-example .pe-row {
+    display: flex; justify-content: center; gap: 28px; flex-wrap: wrap;
+    margin: 0 0 10px;
+  }
+  .price-example .pe-item { font-size: 15px; color: var(--ink); }
+  .price-example .pe-item strong { color: var(--accent); font-weight: 600; }
+  .price-example .pe-note { font-size: 13.5px; color: var(--ink-3); line-height: 1.5; margin: 0; }
+  .qual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 0 0 8px; }
+  .prijava-select {
+    width: 100%; padding: 14px 18px; border-radius: 999px;
+    border: 1.5px solid var(--line-2); background: var(--cream);
+    font-size: 15px; color: var(--ink); outline: none; font-family: inherit;
+    cursor: pointer; -webkit-appearance: none; appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23757972' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 18px center;
+    transition: border-color .2s, background-color .2s;
+  }
+  .prijava-select:focus { border-color: var(--accent); background-color: var(--white); }
+  .prijava-form.stacked { flex-direction: column; align-items: stretch; }
+  .prijava-form.stacked .btn { width: 100%; margin-top: 4px; }
+  @media (max-width: 800px) { .qual-grid { grid-template-columns: 1fr; } .price-example .pe-row { gap: 14px; } }
+</style>
+
 <!-- ============ NAV ============ -->
 <nav class="nav" id="nav">
   <div class="nav-inner">
@@ -1714,75 +2027,82 @@
       Stavba<span class="plus">+</span>
     </a>
     <div class="nav-links">
-      <a href="#zakaj">Zakaj Stavba+</a>
+      <a href="#resitev">Rešitev</a>
       <a href="#kako">Kako deluje</a>
+      <a href="#zakoga">Za koga</a>
       <a href="#cenik">Cenik</a>
-      <a href="#pilot">Prijavi se</a>
       <a href="#faq">Vprašanja</a>
     </div>
-    <a href="#pilot" class="btn btn-primary btn-sm">Prijavi se</a>
+    <a href="#prijava" class="btn btn-primary btn-sm">Prijavite stavbo</a>
   </div>
 </nav>
 
-<!-- ============ HOOK (problem statement) ============ -->
-<section class="hook" id="top">
-  <div class="hook-inner">
-    <span class="hook-eyebrow"><span class="dot"></span>Se to tudi tebi dogaja?</span>
 
-    <div class="hook-quotes">
-      <div class="hook-quote reveal in">
-        <span class="qmark">&ldquo;</span>
-        <p>Zjutraj vstanem in ni bilo tople vode. Nisem vedel/a.</p>
-      </div>
-      <div class="hook-quote reveal in d1">
-        <span class="qmark">&ldquo;</span>
-        <p>Se učim, sosed pa vrta. Nisem vedel/a, da bodo dela.</p>
-      </div>
-      <div class="hook-quote reveal in d2">
-        <span class="qmark">&ldquo;</span>
-        <p>Oglasna deska je na glavnem vhodu — ampak imamo več vhodov. Obvestila nisem videl/a.</p>
-      </div>
+<!-- ============ UVODNI PROBLEM ============ -->
+<section class="hook problem-hook" id="top">
+  <div class="problem-shell">
+  <div class="problem-grid">
+    <div class="problem-stack reveal in">
+      <span class="problem-kicker"><span class="dot"></span> Se tudi tebi to dogaja?</span>
+
+      <blockquote class="problem-quote">
+        <p>Zjutraj vstanem in ni tople vode.<span>Nisem vedel/a, da bo izklop.</span></p>
+      </blockquote>
+
+      <blockquote class="problem-quote">
+        <p>Učim se, sosed pa vrta.<span>Nisem vedel/a, da so napovedana dela.</span></p>
+      </blockquote>
+
+      <blockquote class="problem-quote">
+        <p>Oglasna deska je na glavnem vhodu — mi pa imamo več vhodov.<span>Obvestila nisem videl/a.</span></p>
+      </blockquote>
     </div>
 
-    <p class="hook-question reveal"><span class="accent">Kdo vsak dan pogleda na oglasno desko?</span></p>
-    <p class="hook-question-sub reveal d1">Čas je, da imate <strong>vpogled v dogajanje v vaši stavbi vsak trenutek</strong> — tudi ko ste v službi, na dopustu ali ko nujno potrebujete informacijo.</p>
-
-    <a href="#hero" class="hook-arrow reveal d2">
-      Poglej, kako <i class="ti ti-arrow-down"></i>
-    </a>
+    <div class="problem-copy reveal in d1">
+      <h2 class="problem-title">Kdaj si nazadnje pogledal/a na <span class="accent">oglasno desko</span> v vaši stavbi?</h2>
+      <p class="problem-lead lead">Informacije morajo priti do ljudi, ne čakati na steni pri vhodu.</p>
+    </div>
+  </div>
   </div>
 </section>
+
 
 <!-- ============ HERO ============ -->
 <section class="hero" id="hero">
   <div class="hero-grid">
     <div class="hero-copy">
-      <span class="hero-tag reveal in"><i class="ti ti-building-community"></i> Pregledna aplikacija za vašo stavbo</span>
+      <span class="hero-tag reveal in"><i class="ti ti-clock-hour-4"></i> Kmalu na voljo &middot; razvito za slovenske stavbe</span>
       <h1 class="h-hero reveal in d1">
-        Vse o vaši stavbi <span class="accent">na enem mestu.</span>
+        Vse, kar mora vaš blok vedeti, <span class="accent">na enem mestu.</span>
       </h1>
       <p class="lead reveal in d2">
-        Obvestila, prijave napak, dokumenti in komunikacija — vse, kar potrebujete za pregled nad dogajanjem v vaši stavbi, jasno zapisano in vidno vsem stanovalcem.
+        Stavba+ združi obvestila, dokumente, rezervni sklad, prijavo težav in AI pomoč — pregledno in dostopno vsem stanovalcem.
       </p>
       <div class="hero-cta reveal in d3">
-        <a href="#pilot" class="btn btn-primary btn-lg">Prijavi se in bodi obveščen</a>
-        <a href="#kako" class="btn btn-secondary btn-lg">Kako deluje</a>
+        <a href="#prijava" class="btn btn-primary btn-lg">Prijavite svojo stavbo</a>
+        <a href="#resitev" class="btn btn-secondary btn-lg">Poglejte, kako deluje</a>
       </div>
       <p class="hero-trust reveal in d4">
-        <span><i class="ti ti-shield-check"></i> Podatki v EU</span>
-        <span><i class="ti ti-mail-off"></i> Brez spama</span>
-        <span><i class="ti ti-bolt"></i> Prijava brez spama</span>
+        <span><i class="ti ti-circle-check"></i> Brez menjave upravnika</span>
+        <span><i class="ti ti-bolt"></i> Prednostna aktivacija ob zagonu</span>
+        <span><i class="ti ti-shield-check"></i> Podatki v EU, skladno z GDPR</span>
       </p>
     </div>
 
     <div class="reveal in d2">
+      <div class="mockup-wrap">
       <div class="mockup" aria-label="Predogled Stavba+ pregleda">
         <div class="mockup-top">
           <div>
             <p class="mockup-label">Ulica zgledov 12</p>
             <h3 class="mockup-title">Pregled vaše stavbe</h3>
+            <div class="mockup-meta">
+              <span><i class="ti ti-home"></i> 36 stanovanj</span>
+              <span><i class="ti ti-users"></i> 84% prijavljenih</span>
+              <span><i class="ti ti-building-community"></i> upravnik SPL</span>
+            </div>
           </div>
-          <div class="mockup-pill">v živo</div>
+          <div class="mockup-pill">predogled</div>
         </div>
 
         <div class="mockup-card">
@@ -1810,56 +2130,89 @@
             <li>
               <span class="ico"><i class="ti ti-file-text"></i></span>
               <div>
-                <strong>Letno poročilo 2025</strong>
-                <span>Povzetek sklepov in stroškov</span>
+                <strong>Zapisnik zbora 14. 6. 2026</strong>
+                <span>Sklepi in stroški za vašo stavbo</span>
               </div>
               <span class="tag">dokument</span>
+            </li>
+            <li>
+              <span class="ico"><i class="ti ti-sparkles"></i></span>
+              <div>
+                <strong>AI povzetek zapisnika</strong>
+                <span>Ključne točke v 20 sekundah</span>
+              </div>
+              <span class="tag">AI</span>
             </li>
           </ul>
         </div>
 
+        <div class="mockup-panels">
+          <div class="mockup-mini">
+            <div class="mockup-mini-head">
+              <strong>Ta teden</strong>
+              <span>koledar</span>
+            </div>
+            <ul class="mockup-mini-list">
+              <li>
+                <span class="dot"></span>
+                <div>
+                  <strong>Zbor lastnikov</strong>
+                  <span>Četrtek · 18:00 · skupni prostor</span>
+                </div>
+              </li>
+              <li>
+                <span class="dot"></span>
+                <div>
+                  <strong>Kosovni odpad</strong>
+                  <span>Petek · pred vhodom od 7:00</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="mockup-mini">
+            <div class="mockup-mini-head">
+              <strong>Dokumenti in sklad</strong>
+              <span>pregled</span>
+            </div>
+            <ul class="mockup-mini-list">
+              <li>
+                <span class="dot"></span>
+                <div>
+                  <strong>Rezervni sklad</strong>
+                  <span>42.780 € · stanje posodobljeno danes</span>
+                </div>
+              </li>
+              <li>
+                <span class="dot"></span>
+                <div>
+                  <strong>Nujne številke</strong>
+                  <span>električar · vodovodar · dežurni upravnik</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
         <div class="mockup-stats">
           <div class="mockup-stat"><strong>12</strong><span>aktivnih obvestil</span></div>
-          <div class="mockup-stat"><strong>3</strong><span>prijave napak</span></div>
+          <div class="mockup-stat"><strong>3</strong><span>odprte prijave</span></div>
           <div class="mockup-stat"><strong>42.780 €</strong><span>rezervni sklad</span></div>
+          <div class="mockup-stat"><strong>84%</strong><span>stanovalcev v aplikaciji</span></div>
         </div>
+      </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ STATS STRIP ============ -->
-<div class="stats-strip">
-  <div class="stats-intro reveal">
-    <p>Trg upravljanja stavb v Sloveniji</p>
-  </div>
-  <div class="stats-grid">
-    <div class="stat reveal">
-      <div class="stat-num">25.000<span class="unit">+</span></div>
-      <p class="stat-label">večstanovanjskih stavb v Sloveniji</p>
-    </div>
-    <div class="stat reveal d1">
-      <div class="stat-num">600<span class="unit">+</span></div>
-      <p class="stat-label">različnih upravnikov in načinov komunikacije</p>
-    </div>
-    <div class="stat reveal d2">
-      <div class="stat-num">5</div>
-      <p class="stat-label">inšpektorjev nadzira celotno področje</p>
-    </div>
-    <div class="stat reveal d3">
-      <div class="stat-num">1</div>
-      <p class="stat-label">jasen prostor za stanovalce v vaši stavbi</p>
-    </div>
-  </div>
-</div>
-
 <!-- ============ ZAKAJ STAVBA+ — 3 STEBRI Z PREVIEWI ============ -->
-<section class="pillars" id="zakaj">
+<section class="pillars" id="resitev">
   <div class="container">
     <div class="section-head reveal">
-      <span class="eyebrow"><span class="dot"></span>Kaj je Stavba+</span>
-      <h2 class="h-section">Tri stvari, ki jih stavba potrebuje.</h2>
-      <p class="lead">Brez listkov na hodniku, brez raztresenih WhatsApp skupin, brez ugibanja, kdo je kaj prijavil.</p>
+      <span class="eyebrow"><span class="dot"></span>Rešitev</span>
+      <h2 class="h-section">Vse pomembno na enem mestu.</h2>
+      <p class="lead">Obvestila, prijave težav, dokumenti, rezervni sklad in AI pomoč &mdash; pregledno za vse stanovalce, brez menjave upravnika.</p>
     </div>
 
     <div class="pillars-grid">
@@ -1873,7 +2226,7 @@
         <div class="pillar-preview">
           <div class="preview-head">
             <strong>Obvestila</strong>
-            <span class="pdot">v živo</span>
+            <span class="pdot">predogled</span>
           </div>
           <ul class="preview-items">
             <li class="preview-item">
@@ -1914,33 +2267,29 @@
       <div class="pillar reveal d1">
         <div class="pillar-icon"><i class="ti ti-tool"></i></div>
         <h3 class="h-card">Prijave napak</h3>
-        <p>Pokvarjena luč, težave z dvigalom, počena cev. Fotografija, opis in jasen status do popravila.</p>
+        <p>Plesen v kleti, težave z dvigalom, počena cev. Fotografija, opis in jasen status do popravila.</p>
 
         <div class="pillar-preview">
           <div class="preview-head">
             <strong>Prijava napake</strong>
             <span class="pdot">v delu</span>
           </div>
-          <div class="preview-progress">
+          <div class="preview-progress no-photo">
             <div class="pp-top">
-              <strong>Luč v kleti ne dela</strong>
+              <strong>V kleti se pojavlja plesen</strong>
               <span class="pp-time">pred 2 dnevoma</span>
             </div>
-            <div class="pp-photo"></div>
             <div class="preview-steps">
               <span class="ps-dot done"><i class="ti ti-check"></i></span>
               <span class="ps-line done"></span>
               <span class="ps-dot done"><i class="ti ti-check"></i></span>
               <span class="ps-line done"></span>
               <span class="ps-dot active"></span>
-              <span class="ps-line"></span>
-              <span class="ps-dot"></span>
             </div>
-            <div class="preview-step-labels">
+            <div class="preview-step-labels three">
               <span>prijavljeno</span>
               <span>poslano</span>
               <span>v delu</span>
-              <span>rešeno</span>
             </div>
           </div>
         </div>
@@ -1956,7 +2305,7 @@
       <div class="pillar reveal d2">
         <div class="pillar-icon"><i class="ti ti-folder"></i></div>
         <h3 class="h-card">Dokumenti in stroški</h3>
-        <p>Poročila, zapisniki in sklepi s kratkimi povzetki, ki jih stanovalci dejansko razumejo.</p>
+        <p>Poročila, zapisniki, sklepi in rezervni sklad &mdash; s kratkimi AI povzetki, ki jih stanovalci dejansko razumejo.</p>
 
         <div class="pillar-preview">
           <div class="preview-head">
@@ -2006,8 +2355,9 @@
 <section class="compare">
   <div class="container">
     <div class="section-head reveal">
-      <span class="eyebrow"><span class="dot"></span>Razlika v praksi</span>
-      <h2 class="h-section">Iz neurejenega v <span class="accent">pregledno.</span></h2>
+      <span class="eyebrow"><span class="dot"></span>Zakaj zdaj</span>
+      <h2 class="h-section">Konec ugibanja, <span class="accent">ali je kdo videl obvestilo.</span></h2>
+      <p class="lead">Papir, e-pošta in klepetalne skupine pustijo informacije razpršene. Stavba+ jih spravi na eno mesto.</p>
     </div>
 
     <div class="compare-grid">
@@ -2044,54 +2394,55 @@
     <div class="section-head reveal">
       <span class="eyebrow"><span class="dot"></span>Kako deluje</span>
       <h2 class="h-section">Začetek <span class="accent">brez zapletov.</span></h2>
-      <p class="lead">Stavbo lahko aktivirate v nekaj minutah. Brez uvajanja, brez papirjev, brez kartice.</p>
+      <p class="lead">Ko bo aplikacija pripravljena, bo aktivacija preprosta &mdash; brez uvajanja, papirjev in kartice.</p>
     </div>
 
     <div class="steps-grid">
       <div class="step reveal">
-        <div class="step-num">01 — PRIJAVA</div>
-        <h3 class="h-card">Aktivirate stavbo</h3>
-        <p>Predstavnik ali skupina stanovalcev nas kontaktira. Stavba dobi digitalni prostor v 24 urah.</p>
+        <div class="step-num">01 — PRIJAVA (ZDAJ)</div>
+        <h3 class="h-card">Prijavite stavbo</h3>
+        <p>Predstavnik etažnih lastnikov ali skupina stanovalcev se prijavi na prednostni seznam &mdash; brez menjave upravnika in brez zaveze.</p>
       </div>
 
       <div class="step reveal d1">
-        <div class="step-num">02 — DOSTOP</div>
-        <h3 class="h-card">Stanovalci se pridružijo</h3>
-        <p>Vsak stanovalec dobi svoj dostop — lastnik, najemnik ali predstavnik. Vsak vidi, kar je zanj relevantno.</p>
+        <div class="step-num">02 — OB ZAGONU</div>
+        <h3 class="h-card">Stavbo aktiviramo</h3>
+        <p>Ko aplikacija zaživi, prijavljene stavbe aktiviramo prednostno &mdash; v 24 urah. Vsak stanovalec dobi svoj dostop.</p>
       </div>
 
       <div class="step reveal d2">
         <div class="step-num">03 — UPORABA</div>
         <h3 class="h-card">Vse postane pregledno</h3>
-        <p>Obvestila, prijave, dokumenti in stroški so končno na enem mestu — vidni, sledljivi in dostopni vsem.</p>
+        <p>Obvestila, prijave, dokumenti in stroški so na enem mestu &mdash; vidni, sledljivi in dostopni vsem stanovalcem.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ============ ZA KOGA ============ -->
-<section class="who">
+<section class="who" id="zakoga">
   <div class="container">
     <div class="section-head reveal">
       <span class="eyebrow"><span class="dot"></span>Za koga je Stavba+</span>
-      <h2 class="h-section">Za vse, ki živijo v vaši stavbi.</h2>
+      <h2 class="h-section">Najprej za tistega, ki uredi blok.</h2>
+      <p class="lead">Stavbo običajno aktivira predstavnik ali aktiven lastnik &mdash; korist pa imajo vsi, vključno z upravnikom.</p>
     </div>
 
     <div class="who-grid reveal d1">
       <div class="who-card">
+        <div class="who-icon"><i class="ti ti-user-check"></i></div>
+        <h3>Predstavnik etažnih lastnikov</h3>
+        <p>Manj klicev in ponavljajočih vprašanj, več reda. Obvestila, prijave in dokumenti urejeni na enem mestu &mdash; in vsi jih vidijo.</p>
+      </div>
+      <div class="who-card">
         <div class="who-icon"><i class="ti ti-home"></i></div>
         <h3>Lastniki in najemniki</h3>
-        <p>Pregled nad dogajanjem v vaši stavbi, tudi če niste vsak dan doma ali ste lastnik na drugi lokaciji.</p>
+        <p>Pregled nad dogajanjem v stavbi, tudi če niste vsak dan doma. Vidite, za kaj plačujete.</p>
       </div>
       <div class="who-card">
-        <div class="who-icon"><i class="ti ti-user-check"></i></div>
-        <h3>Predstavniki vaše stavbe</h3>
-        <p>Manj šuma in ponavljanja, več reda. Prijave, obvestila in dokumenti so urejeni na enem mestu.</p>
-      </div>
-      <div class="who-card">
-        <div class="who-icon"><i class="ti ti-users-group"></i></div>
-        <h3>Skupine stanovalcev</h3>
-        <p>Tudi v vaši stavbi lahko začnete — s preprostim skupnim prostorom za obvestila.</p>
+        <div class="who-icon"><i class="ti ti-briefcase"></i></div>
+        <h3>Upravniki</h3>
+        <p>Sodoben komunikacijski sloj za vaše stranke. Stavba+ dela <strong>z</strong> obstoječim upravnikom, ne proti njemu.</p>
       </div>
     </div>
   </div>
@@ -2103,7 +2454,7 @@
   <div class="container">
     <div class="section-head reveal">
       <span class="eyebrow"><span class="dot"></span>Cenik</span>
-      <h2 class="h-section">Enostavna cena za vašo stavbo.</h2>
+      <h2 class="h-section">Enostavna cena za vaš blok.</h2>
       <p class="lead">Brez paketov, brez kompliciranja. Ena jasna cena za stavbe do 100 stanovanj, AI pomočnik pa je na voljo kot ločen dodatek.</p>
     </div>
 
@@ -2136,36 +2487,54 @@
       </div>
     </div>
 
-    <p class="pricing-contact-note reveal d3">Več kot 100 stanovanj v stavbi? <a href="#faq-question">Kontaktirajte nas</a> za ponudbo po meri.</p>
+    <div class="price-example reveal d3">
+      <div class="pe-row">
+        <span class="pe-item">20 stanovanj &middot; <strong>19,80 €</strong>/mes</span>
+        <span class="pe-item">40 stanovanj &middot; <strong>39,60 €</strong>/mes</span>
+        <span class="pe-item">80 stanovanj &middot; <strong>79,20 €</strong>/mes</span>
+      </div>
+      <p class="pe-note">Cena velja za celo stavbo (0,99 € na stanovanje) in se običajno porazdeli med stanovanja oz. krije v okviru upravljanja. Več kot 100 stanovanj? <a href="#faq-question" style="color:var(--accent);">Kontaktirajte nas.</a></p>
+    </div>
   </div>
 </section>
 
 <!-- ============ PILOT (z email formo) ============ -->
-<section class="prijava" id="pilot">
+<section class="prijava" id="prijava">
   <div class="container">
     <div class="section-head reveal">
-      <span class="eyebrow"><span class="dot"></span>Prijavi se</span>
-      <h2 class="h-section">Prijavi se in bodi obveščen, ko aplikacija zaživi.</h2>
-      <p class="lead">Bodite med prvimi, ki uredijo obveščanje v vaši stavbi.</p>
+      <span class="eyebrow"><span class="dot"></span>Prijava stavbe</span>
+      <h2 class="h-section">Prijavite svojo stavbo na prednostni seznam.</h2>
+      <p class="lead">Aplikacija je v zaključni fazi. Prijavljene stavbe aktiviramo prednostno, v 24 urah po zagonu.</p>
     </div>
 
     <div class="prijava-card reveal d1">
-      <h3>Stavba+ je pregledna aplikacija za vašo stavbo.</h3>
-      <p class="prijava-desc">Da imajo stanovalci pomembne informacije v vaši stavbi vedno na enem mestu. Pustite svoj e-poštni naslov — obvestili vas bomo, ko aplikacija zaživi.</p>
+      <h3>Povejte nam nekaj o svoji stavbi.</h3>
+      <p class="prijava-desc">Tako aktivacijo pripravimo hitreje in vam pokažemo primer, ki ustreza vaši stavbi.</p>
 
-      <form class="prijava-form" id="pilotForm" novalidate>
-        <input
-          type="email"
-          class="prijava-input"
-          id="pilotEmail"
-          placeholder="E-poštni naslov"
-          required
-          autocomplete="email"
-        >
-        <button type="submit" class="btn btn-primary btn-lg">Prijavi se</button>
+      <form class="prijava-form stacked" id="pilotForm" novalidate>
+        <div class="qual-grid">
+          <select class="prijava-select" id="pilotRole" aria-label="Vaša vloga">
+            <option value="">Vaša vloga ...</option>
+            <option>Predstavnik etažnih lastnikov</option>
+            <option>Lastnik stanovanja</option>
+            <option>Najemnik</option>
+            <option>Upravnik</option>
+            <option>Drugo</option>
+          </select>
+          <select class="prijava-select" id="pilotSize" aria-label="Velikost stavbe">
+            <option value="">Velikost stavbe ...</option>
+            <option>do 8 stanovanj</option>
+            <option>9&ndash;19 stanovanj</option>
+            <option>20&ndash;49 stanovanj</option>
+            <option>50&ndash;80 stanovanj</option>
+            <option>nad 80 stanovanj</option>
+          </select>
+        </div>
+        <input type="email" class="prijava-input" id="pilotEmail" placeholder="E-poštni naslov" required autocomplete="email">
+        <button type="submit" class="btn btn-primary btn-lg">Prijavite stavbo na prednostni seznam</button>
       </form>
 
-      <p class="prijava-note">Uporabimo ga samo za obvestilo ob zagonu aplikacije. Brez spama.</p>
+      <p class="prijava-note">Podatke uporabimo le za pripravo aktivacije in obvestilo ob zagonu. Brez spama.</p>
 
       <div class="prijava-success" id="pilotSuccess">
         <i class="ti ti-circle-check"></i>
@@ -2177,8 +2546,8 @@
       </div>
 
       <ul class="prijava-features">
-        <li><i class="ti ti-check"></i><span>Eno obvestilo ob začetku. Brez spama.</span></li>
-        <li><i class="ti ti-check"></i><span>Prednostno obvestilo ob zagonu aplikacije.</span></li>
+        <li><i class="ti ti-check"></i><span>Prednostna aktivacija stavbe ob zagonu, v 24 urah.</span></li>
+        <li><i class="ti ti-check"></i><span>Brez menjave upravnika in brez dolgoročne zaveze.</span></li>
         <li><i class="ti ti-check"></i><span>Podatki gostujejo v EU in so skladni z GDPR.</span></li>
       </ul>
     </div>
@@ -2210,7 +2579,7 @@
           <span class="ic"><i class="ti ti-plus"></i></span>
         </summary>
         <div class="faq-a">
-          <p>Prijavi se lahko predstavnik etažnih lastnikov, lastnik stanovanja, najemnik ali skupina stanovalcev. Za obvestilo ob zagonu aplikacije potrebujemo samo e-poštni naslov.</p>
+          <p>Prijavi se lahko predstavnik etažnih lastnikov, lastnik, najemnik ali upravnik. Pri prijavi izberite svojo vlogo in velikost stavbe, da aktivacijo pripravimo hitreje.</p>
         </div>
       </details>
 
@@ -2236,11 +2605,11 @@
 
       <details class="faq-item">
         <summary class="faq-q">
-          <span>Koliko bo Stavba+ stal ob lansiranju?</span>
+          <span>Kdo plača Stavba+?</span>
           <span class="ic"><i class="ti ti-plus"></i></span>
         </summary>
         <div class="faq-a">
-          <p>Cena je 0,99 € na stanovanje na mesec za stavbe do 100 stanovanj. AI pomočnik je ločen dodatek in stane 4,99 € na stavbo na mesec. Če ima vaša stavba več kot 100 stanovanj, nas kontaktirajte za ponudbo po meri.</p>
+          <p>Cena se nanaša na celo stavbo &mdash; 0,99 € na stanovanje na mesec. Strošek se običajno porazdeli med stanovanja ali krije v okviru rednega upravljanja; o tem odločajo etažni lastniki. Za 40-stanovanjsko stavbo to pomeni okoli 39,60 € na mesec za celotno stavbo. AI pomočnik je neobvezen dodatek (4,99 € na stavbo na mesec).</p>
         </div>
       </details>
     </div>
@@ -2278,10 +2647,11 @@
       <div>
         <h4>Produkt</h4>
         <ul>
-          <li><a href="#zakaj">Kaj je Stavba+</a></li>
+          <li><a href="#resitev">Rešitev</a></li>
           <li><a href="#kako">Kako deluje</a></li>
+          <li><a href="#zakoga">Za koga</a></li>
           <li><a href="#cenik">Cenik</a></li>
-          <li><a href="#pilot">Prijavi se</a></li>
+          <li><a href="#prijava">Prijavite stavbo</a></li>
           <li><a href="#faq">Vprašanja</a></li>
         </ul>
       </div>
@@ -2389,6 +2759,10 @@
     pilotForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       const email = pilotEmail.value.trim();
+      const roleEl = document.getElementById('pilotRole');
+      const sizeEl = document.getElementById('pilotSize');
+      const vloga = roleEl ? roleEl.value.trim() : '';
+      const velikost = sizeEl ? sizeEl.value.trim() : '';
 
       if (pilotError) pilotError.classList.remove('show');
       pilotSuccess.classList.remove('show');
@@ -2405,9 +2779,11 @@
       try {
         await sendToFormspree({
           email: email,
-          obrazec: 'Prijava za obvestilo ob zagonu',
-          sporocilo: 'Prijava za obvestilo ob zagonu aplikacije Stavba+.',
-          _subject: 'Nova prijava Stavba+'
+          vloga: vloga || '(ni izbrano)',
+          velikost_stavbe: velikost || '(ni izbrano)',
+          obrazec: 'Prijava stavbe na prednostni seznam',
+          sporocilo: 'Prijava stavbe. Vloga: ' + (vloga || '-') + ', velikost: ' + (velikost || '-') + '.',
+          _subject: 'Nova prijava stavbe — Stavba+'
         });
 
         pilotForm.style.display = 'none';
@@ -2415,6 +2791,8 @@
         if (pilotNote) pilotNote.style.display = 'none';
         pilotSuccess.classList.add('show');
         pilotEmail.value = '';
+        if (roleEl) roleEl.value = '';
+        if (sizeEl) sizeEl.value = '';
       } catch (err) {
         console.warn('Formspree napaka pri prijavi:', err);
         if (pilotError) pilotError.classList.add('show');
