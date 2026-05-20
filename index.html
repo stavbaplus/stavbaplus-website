@@ -946,6 +946,17 @@
   }
   .section-head h2 { margin-bottom: 18px; }
   .section-head .lead { margin: 0 auto; }
+  .section-head .lead.feature-lead {
+    max-width: 980px;
+    font-size: clamp(32px, 4.5vw, 52px);
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .section-head .lead.feature-lead .accent {
+    color: var(--accent);
+  }
 
   /* ===========================================
      ZAKAJ STAVBA+ (3 stebri z APP PREVIEW-ji)
@@ -2256,8 +2267,7 @@
   <div class="container">
     <div class="section-head reveal">
       <span class="eyebrow"><span class="dot"></span>Rešitev</span>
-      <h2 class="h-section">Vse pomembno na enem mestu.</h2>
-      <p class="lead">Obvestila, prijave težav, dokumenti, rezervni sklad in AI pomoč &mdash; pregledno za vse stanovalce, brez menjave upravnika.</p>
+      <p class="lead feature-lead">Pregledno za vse stanovalce, <span class="accent">brez menjave upravnika.</span></p>
     </div>
 
     <div class="pillars-grid">
