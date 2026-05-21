@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#FBFAF7">
 <meta name="description" content="Stavba+ bo združil obvestila, dokumente, rezervni sklad, prijavo težav in AI pomoč za vaš blok na enem mestu. Prijavite svojo stavbo na prednostni seznam.">
 <meta property="og:title" content="Stavba+ — vse, kar mora vaš blok vedeti, na enem mestu">
-<meta property="og:description" content="Obvestila, prijave napak, dokumenti in komunikacija na enem mestu. Prijavi se in bodi obveščen, ko aplikacija zaživi.">
+<meta property="og:description" content="Obvestila, dokumenti, rezervni sklad, prijava težav in AI pomoč za vaš blok — na enem mestu. Prijavite svojo stavbo na prednostni seznam.">
 <meta property="og:url" content="https://stavbaplus.si">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="sl_SI">
@@ -31,7 +31,7 @@
     --dark: #0F2419;
     --ink: #1A1D1A;
     --ink-2: #4A4F47;
-    --ink-3: #757972;
+    --ink-3: #656A62;
     --on-dark: #F4F0E8;
     --on-dark-2: rgba(244, 240, 232, 0.72);
     --accent: #2E5D4C;
@@ -2043,6 +2043,106 @@
   ::-webkit-scrollbar-thumb { background: var(--line-2); border-radius: 5px; }
   ::-webkit-scrollbar-thumb:hover { background: var(--ink-3); }
 </style>
+<style>
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+    .reveal { opacity: 1 !important; transform: none !important; }
+  }
+  .price-banner {
+    grid-column: 1 / -1;
+    justify-self: center;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent);
+    color: var(--cream);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    padding: 8px 18px;
+    border-radius: 999px;
+    box-shadow: 0 6px 16px rgba(46, 93, 76, 0.22);
+    margin-bottom: 4px;
+  }
+  .price-banner i { font-size: 16px; color: var(--accent-on-dark); }
+  @media (max-width: 560px) {
+    .price-banner { width: 100%; justify-content: center; white-space: normal; text-align: center; }
+  }
+</style>
+<link rel="canonical" href="https://stavbaplus.si/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://stavbaplus.si/#organizacija",
+      "name": "Stavba+",
+      "url": "https://stavbaplus.si/",
+      "description": "Digitalna rešitev za obvestila, dokumente, rezervni sklad, prijavo težav in AI pomoč v večstanovanjskih stavbah.",
+      "areaServed": "SI"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://stavbaplus.si/#spletisce",
+      "url": "https://stavbaplus.si/",
+      "name": "Stavba+",
+      "inLanguage": "sl-SI",
+      "publisher": { "@id": "https://stavbaplus.si/#organizacija" }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Stavba+",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web, iOS, Android",
+      "inLanguage": "sl-SI",
+      "description": "Stavba+ zdru\u017Ei obvestila, dokumente, rezervni sklad, prijavo te\u017Eav in AI pomo\u010D za ve\u010Dstanovanjske stavbe \u2014 na enem mestu, brez menjave upravnika.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0.99",
+        "priceCurrency": "EUR",
+        "description": "0,99 \u20AC na stanovanje na mesec za stavbe do 100 stanovanj"
+      },
+      "publisher": { "@id": "https://stavbaplus.si/#organizacija" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Ali Stavba+ nadome\u0161\u010Da upravnika?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Ne. Stavba+ je orodje za komunikacijo in pregled v va\u0161i stavbi. Upravnika ne nadome\u0161\u010Da \u2014 pomaga pa, da so informacije in dokumenti dostopni vsem stanovalcem, brez nepotrebnih zapletov." }
+        },
+        {
+          "@type": "Question",
+          "name": "Kdo se lahko prijavi?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Prijavi se lahko predstavnik eta\u017Enih lastnikov, lastnik, najemnik ali upravnik. Pri prijavi izberite svojo vlogo in velikost stavbe, da aktivacijo pripravimo hitreje." }
+        },
+        {
+          "@type": "Question",
+          "name": "Kaj dobijo prve prijavljene stavbe?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Prve prijavljene stavbe bodo imele prednost pri uvajanju, mo\u017Enost vpliva na razvoj funkcionalnosti in obvestilo takoj, ko bo aplikacija pripravljena za uporabo." }
+        },
+        {
+          "@type": "Question",
+          "name": "Kje so shranjeni podatki?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Vsi podatki so shranjeni na stre\u017Enikih v Evropski uniji v skladu z GDPR. Dostop imajo samo stanovalci va\u0161e stavbe in njihovi predstavniki \u2014 vsak v okviru svoje vloge." }
+        },
+        {
+          "@type": "Question",
+          "name": "Kdo pla\u010Da Stavba+?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Cena se nana\u0161a na celo stavbo \u2014 0,99 \u20AC na stanovanje na mesec. Stro\u0161ek se obi\u010Dajno porazdeli med stanovanja ali krije v okviru rednega upravljanja. Za 40-stanovanjsko stavbo to pomeni okoli 39,60 \u20AC na mesec za celotno stavbo. AI pomo\u010Dnik je neobvezen dodatek (4,99 \u20AC na stavbo na mesec)." }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -2099,7 +2199,7 @@
   <div class="problem-shell">
   <div class="problem-grid">
     <div class="problem-stack reveal in">
-      <span class="problem-kicker"><span class="dot"></span> Se tudi tebi to dogaja?</span>
+      <span class="problem-kicker"><span class="dot"></span> Se to dogaja tudi pri vas?</span>
 
       <blockquote class="problem-quote">
         <p>Zjutraj vstanem in ni tople vode.<span>Nisem vedel/a, da bo izklop.</span></p>
@@ -2115,7 +2215,7 @@
     </div>
 
     <div class="problem-copy reveal in d1">
-      <h2 class="problem-title">Kdaj si nazadnje pogledal/a na <span class="accent">oglasno desko</span> v vaši stavbi?</h2>
+      <h2 class="problem-title">Kdaj ste nazadnje pogledali na <span class="accent">oglasno desko</span> v vaši stavbi?</h2>
       <p class="problem-lead lead">Informacije morajo priti do ljudi, ne čakati na steni pri vhodu.</p>
     </div>
   </div>
@@ -2136,7 +2236,7 @@
       </p>
       <div class="hero-cta reveal in d3">
         <a href="#prijava" class="btn btn-primary btn-lg">Prijavite svojo stavbo</a>
-        <a href="#resitev" class="btn btn-secondary btn-lg">Poglejte, kako deluje</a>
+        <a href="#kako" class="btn btn-secondary btn-lg">Poglejte, kako deluje</a>
       </div>
       <p class="hero-trust reveal in d4">
         <span><i class="ti ti-circle-check"></i> Brez menjave upravnika</span>
@@ -2155,7 +2255,7 @@
             <div class="mockup-meta">
               <span><i class="ti ti-home"></i> 36 stanovanj</span>
               <span><i class="ti ti-users"></i> 84% prijavljenih</span>
-              <span><i class="ti ti-building-community"></i> upravnik SPL</span>
+              <span><i class="ti ti-building-community"></i> vaš upravnik</span>
             </div>
           </div>
           <div class="mockup-pill">predogled</div>
@@ -2267,6 +2367,7 @@
   <div class="container">
     <div class="section-head reveal">
       <span class="eyebrow"><span class="dot"></span>Rešitev</span>
+      <h2 class="h-section">Vse pomembno o vaši stavbi na enem mestu.</h2>
       <p class="lead feature-lead">Pregledno za vse stanovalce, <span class="accent">brez menjave upravnika.</span></p>
     </div>
 
@@ -2514,7 +2615,7 @@
     </div>
 
     <div class="pricing-single reveal d1">
-      <div class="pricing-ribbon">3 mesece brezplačno</div>
+      <div class="price-banner"><i class="ti ti-gift"></i> 3 mesece brezplačno ob zagonu</div>
       <div>
         <h3>Stavba+</h3>
         <p>Vsa obvestila, prijave napak, dokumenti, koledar in pregled dogajanja v vaši stavbi — na enem mestu.</p>
